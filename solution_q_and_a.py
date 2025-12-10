@@ -68,7 +68,7 @@ async def main():
 
     for i in range(len(user_questions)):
         print(f"Question: {user_questions[i]}")
-        print(f"Answer: {user_answers[i]}")
+        print(f"Answer: {user_answers[i][0]}")
         print("-" * 50)
 
 
