@@ -15,8 +15,6 @@ os.environ["EMBEDDING_ENDPOINT"] = "http://localhost:11434/api/embed"
 os.environ["EMBEDDING_DIMENSIONS"] = "768"
 os.environ["HUGGINGFACE_TOKENIZER"] = "nomic-ai/nomic-embed-text-v1.5"
 
-import cognee
-
 from custom_retriever import GraphCompletionRetrieverWithUserPrompt
 
 
@@ -73,10 +71,6 @@ async def main():
         print(f"Question: {user_questions[i]}")
         print(f"Answer: {user_answers[i]}")
         print("-" * 50)
-
-    # Visualize the graph
-    # from cognee.api.v1.visualize.visualize import visualize_graph
-    # await visualize_graph("./graphs/enriched_graph.html")
 
 
 if __name__ == "__main__":
