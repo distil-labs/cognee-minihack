@@ -1,5 +1,5 @@
 import os
-
+# Note, those definitions need to be above all other imports
 # Since we are using Ollama locally, we do not need an API key, although it is important that it is defined, and not an empty string.
 os.environ["LLM_API_KEY"] = "."
 os.environ["LLM_PROVIDER"] = "ollama"
