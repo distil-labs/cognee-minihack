@@ -1,6 +1,4 @@
-import asyncio
 import os
-import pathlib
 
 # Since we are using Ollama locally, we do not need an API key, although it is important that it is defined, and not an empty string.
 os.environ["LLM_API_KEY"] = "."
@@ -16,7 +14,8 @@ os.environ["EMBEDDING_DIMENSIONS"] = "768"
 os.environ["HUGGINGFACE_TOKENIZER"] = "nomic-ai/nomic-embed-text-v1.5"
 
 from custom_retriever import GraphCompletionRetrieverWithUserPrompt
-
+import asyncio
+import pathlib
 
 async def main():
     """
@@ -74,13 +73,12 @@ async def main():
 
 
 if __name__ == "__main__":
-    # import resource
-    #
-    # soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
-    # print("Before:", soft, hard)
-    # resource.setrlimit(resource.RLIMIT_NOFILE, (min(10000, hard), hard))
-    #
-    # soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
-    # print("After: ", soft, hard)
+    import resource
 
+    soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
+    print("Before:", soft, hard)
+    resource.setrlimit(resource.RLIMIT_NOFILE, (min(10000, hard), hard))
+
+    soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
+    print("After: ", soft, hard)
     asyncio.run(main())

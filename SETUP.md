@@ -8,50 +8,22 @@ This guide explains how to set up question answering using the cognee-distillabs
 
 Install Ollama from [ollama.com/](https://ollama.com/) or using your package manager.
 
-### 2. Download the Model
+### 3. Register Ollama Model
 
-Create a new directory and download the model from HuggingFace:
-
-```bash
-mkdir -p models && cd models
-```
-
-**Option A: Using huggingface-cli (recommended)**
+Navigate to the models directory containing the downloaded model files and the register the models with:
 
 ```bash
-# Install the Hugging Face CLI if not already installed
-pip install huggingface_hub
+cd models
 
-# Download the model repository
-huggingface-cli download distillabs/cognee-distillabs-gguf-quantized --local-dir cognee-distillabs-gguf-quantized
-
-# If the command above does not work, you can try the following command
-hf download distillabs/cognee-distillabs-gguf-quantized --local-dir cognee-distillabs-gguf-quantized
-```
-
-**Option B: Using Git LFS**
-
-```bash
-# Install git-lfs if not already installed
-# macOS: brew install git-lfs
-# Ubuntu: apt install git-lfs
-
-git lfs install
-git clone https://huggingface.co/distillabs/cognee-distillabs-gguf-quantized
-```
-
-### 3. Create the Ollama Model
-
-Navigate to the directory containing the downloaded model files and run:
-
-```bash
-ollama create cognee-distillabs-model-gguf-quantized
-ollama pull nomic-embed-text
+ollama create nomic-embed-text -f nomic-embed-text/Modelfile
+ollama create cognee-distillabs-model-gguf-quantized -f cognee-distillabs-model-gguf-quantized/Modelfile
 ```
 
 ### 4. Graph Setup
 
-You will need a virtual environment (venv) configured for this, so if you didn't create one beforehand, here is how you can do it:
+You will need a virtual environment (venv) configured for this, so if you didn't create one beforehand, here is how you
+can do it:
+
 ```bash
 # You can easily do if with the help of uv
 uv venv
@@ -64,13 +36,14 @@ source .venv/bin/activate
 ```
 
 In order to import the generated graph into your venv memory, you should run the following script:
+
 ```bash
 python setup.py
 ```
 
 ## 5. Configuration
 
-Modify the `solution_q_and_a.py` script by adding the following environment variable configuration at the top of the file:
+Modify the `solution_q_and_a.py` script by adding the following environment variable configuration **at the top of the file** (note, it won't work unless the addition starts at line 1 of the new file):
 
 ```python
 import os
@@ -100,3 +73,36 @@ python solution_q_and_a.py
 ## 7. Example Results
 
 Example results comparing LLM and SLM outputs can be found in `responses.txt`.
+
+
+## Appendix: Using base QWEN4 model with ollama
+
+To use the base QWEN3 model, Navigate to the models directory containing the downloaded model files and the register the models with:
+
+```bash
+cd models
+
+ollama create Qwen3-4B-Q4_K_M -f Qwen3-4B-Q4_K_M/Modelfile
+```
+
+Once its loaded, you can use it using standard [OpenAI interface](https://ollama.com/blog/openai-compatibility). For exampel from python as
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url = 'http://localhost:11434/v1',
+    api_key='ollama', # required, but unused
+)
+
+response = client.chat.completions.create(
+  model="Qwen3-4B-Q4_K_M",
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Who won the world series in 2020?"},
+    {"role": "assistant", "content": "The LA Dodgers won in 2020."},
+    {"role": "user", "content": "Where was it played?"}
+  ]
+)
+print(response.choices[0].message.content)
+```
