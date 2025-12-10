@@ -44,6 +44,13 @@ uv pip install cognee transformers
 python setup.py
 ```
 
+or if you do not like uv (you should like it), use 
+
+```bash
+python -m pip install cognee transformers
+python setup.py
+```
+
 ## 5. Running the Script
 
 Once configured, run the question answering script:
