@@ -17,6 +17,8 @@ cd models
 
 ollama create nomic-embed-text -f nomic-embed-text/Modelfile
 ollama create cognee-distillabs-model-gguf-quantized -f cognee-distillabs-model-gguf-quantized/Modelfile
+
+cd ..
 ```
 
 ### 4. Graph Setup
@@ -38,6 +40,7 @@ source .venv/bin/activate
 In order to import the generated graph into your venv memory, you should run the following script:
 
 ```bash
+uv pip install cognee transformers
 python setup.py
 ```
 
