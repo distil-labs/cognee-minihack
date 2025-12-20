@@ -30,3 +30,28 @@ Any tool, workflow, interface, or feature that benefits from QA over vendor, pro
 
 - You do not have to add new files modify or enrich the graph. In case you want to, there is some additional data in the
   `optional_data_for_enrichment` folder.
+
+  ---
+
+## Links
+
+<p align="center">
+  <a href="https://www.distillabs.ai/?utm_source=github&utm_medium=referral&utm_campaign=cognee-minihack">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-distillabs-home.svg?raw=true" alt="Distil Labs Homepage" />
+  </a>
+  <a href="https://github.com/distil-labs">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-github.svg?raw=true" alt="GitHub" />
+  </a>
+  <a href="https://huggingface.co/distil-labs">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-huggingface.svg?raw=true" alt="Hugging Face" />
+  </a>
+  <a href="https://www.linkedin.com/company/distil-labs/">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-linkedin.svg?raw=true" alt="LinkedIn" />
+  </a>
+  <a href="https://distil-labs-community.slack.com/join/shared_invite/zt-36zqj87le-i3quWUn2bjErRq22xoE58g">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-slack.svg?raw=true" alt="Slack" />
+  </a>
+  <a href="https://x.com/distil_labs">
+    <img src="https://github.com/distil-labs/badges/blob/main/badge-twitter.svg?raw=true" alt="Twitter" />
+  </a>
+</p>
